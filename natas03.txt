@@ -1,0 +1,6 @@
+natas3:G6ctbMJ5Nb4cbFwhpMPSvxGHhQ7I6W8Q
+
+ctrl + U
+view-source:http://natas3.natas.labs.overthewire.org/robots.txt
+http://natas3.natas.labs.overthewire.org/s3cr3t/
+http://natas3.natas.labs.overthewire.org/s3cr3t/users.txt
