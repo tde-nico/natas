@@ -1,0 +1,6 @@
+natas2:h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7
+
+ctrl + U
+http://natas2.natas.labs.overthewire.org/files/pixel.png
+http://natas2.natas.labs.overthewire.org/files/
+http://natas2.natas.labs.overthewire.org/files/users.txt
