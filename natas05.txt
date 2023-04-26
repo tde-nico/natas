@@ -1,0 +1,3 @@
+natas5:Z0NsrtIkJoKALBCLi5eqFfcRN82Au2oD
+
+on burp change "Cookie: loggedin=0" to "Cookie: loggedin=1"
