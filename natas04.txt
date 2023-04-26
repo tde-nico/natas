@@ -1,0 +1,3 @@
+natas4:tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
+
+intercept on burpsuite and change referrer
