@@ -1,0 +1,3 @@
+natas9:Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd
+
+; cat /etc/natas_webpass/natas10;
