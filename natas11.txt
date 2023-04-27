@@ -1,0 +1,23 @@
+natas11:1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg
+
+f12 (dev mode console) -> document.cookie -> data
+
+<?php
+$originalString = json_encode(array( "showpassword"=>"no", "bgcolor"=>"#ffffff"));
+$cookieString = base64_decode("MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5oKC4qLSgubjY%3D");
+echo $originalString ^ $cookieString;
+// KNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLK -> KNHL
+
+<?php
+$key = "KNHL";
+$newString = json_encode(array( "showpassword"=>"yes", "bgcolor"=>"#ffffff"));
+$cookieData = '';
+for ($i = 0; $i < strlen($newString); $i++) {
+$cookieData .= $key[$i % strlen($key)] ^ $newString[$i];
+}
+echo base64_encode($cookieData);
+// MGw7JCQ5OC04PT8jOSpqdmk3LT9pYmouLC0nICQ8anZpbS4qLSguKmkz
+
+f12 (dev mode console) -> document.cookie="data=MGw7JCQ5OC04PT8jOSpqdmk3LT9pYmouLC0nICQ8anZpbS4qLSguKmkz"
+
+reload page
