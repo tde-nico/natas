@@ -1,0 +1,4 @@
+natas8:a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
+
+import base64
+print(base64.b64decode(bytes.fromhex("3d3d516343746d4d6d6c315669563362")[::-1]).decode())
