@@ -1,0 +1,4 @@
+natas13:lW3jYRI02ZKDBb8VtQBU1f6eDRo6WEj9
+
+take the previous file and insert at the beginnig
+the hex " FF D8 FF E0 " (jpg standard)
